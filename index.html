@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>百年盲盒对话 · 1919 ↔ 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --wx-green:#07C160;--wx-dark:#1A1A1A;--wx-bg:#EDEDED;
+  --wx-card:#FFF;--wx-text:#111;--wx-sub:#888;
+  --wx-border:#E5E5E5;--wx-red:#FA5151;--wx-orange:#FF9800;
+  --sepia:#F5F0E8;--ink:#2C1810;--aged:#8B7355;
+  --gold:#C9A96E;--crimson:#B22222;
+}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;
+  background:var(--wx-bg);color:var(--wx-text);
+  min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+.hidden{display:none!important}
+.page{min-height:calc(100vh - 56px - 60px);padding:12px;padding-bottom:80px;animation:pageIn .4s ease}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+@keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(201,169,110,.3)}50%{box-shadow:0 0 40px rgba(201,169,110,.6)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes stampIn{0%{transform:scale(3) rotate(-30deg);opacity:0}60%{transform:scale(.9) rotate(2deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes typewriter{from{width:0}to{width:100%}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes likePop{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
+@keyframes confetti{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(-200px) rotate(720deg);opacity:0}}
+
+/* Splash */
+#splash{
+  position:fixed;inset:0;z-index:1000;
+  background:linear-gradient(160deg,#0d0500 0%,#2C1810 40%,#4a2c1a 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .8s,transform .8s;
+}
+#splash.fade-out{opacity:0;transform:scale(1.15)}
+.splash-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.splash-particle{
+  position:absolute;width:3px;height:3px;background:var(--gold);border-radius:50%;
+  animation:float 3s ease-in-out infinite;opacity:.4;
+}
+.splash-year{
+  font-size:clamp(56px,14vw,96px);font-weight:900;
+  background:linear-gradient(135deg,var(--gold),#fff,var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:12px;margin-bottom:4px;position:relative;z-index:1;
+  text-shadow:0 0 60px rgba(201,169,110,.3);
+}
+.splash-vs{
+  font-size:14px;color:rgba(201,169,110,.5);letter-spacing:8px;margin-bottom:4px;
+}
+.splash-year2{
+  font-size:clamp(28px,7vw,48px);font-weight:700;
+  background:linear-gradient(135deg,var(--wx-green),#8f8,var(--wx-green));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:6px;margin-bottom:24px;
+}
+.splash-sub{color:var(--gold);font-size:clamp(14px,3.5vw,18px);letter-spacing:8px;opacity:.7;margin-bottom:48px;position:relative;z-index:1}
+.splash-desc{color:rgba(255,255,255,.35);font-size:13px;margin-bottom:40px;text-align:center;line-height:1.8;position:relative;z-index:1}
+.splash-enter{
+  padding:16px 56px;border:2px solid var(--gold);background:transparent;
+  color:var(--gold);font-size:18px;border-radius:30px;cursor:pointer;
+  letter-spacing:4px;transition:all .3s;position:relative;z-index:1;
+  animation:glow 2s ease-in-out infinite;
+}
+.splash-enter:hover{background:var(--gold);color:#1a0a00}
+.splash-stats{
+  position:absolute;bottom:40px;display:flex;gap:32px;z-index:1;
+}
+.splash-stat{text-align:center;color:rgba(255,255,255,.3)}
+.splash-stat-num{font-size:20px;font-weight:700;color:var(--gold)}
+.splash-stat-label{font-size:11px;margin-top:2px}
+
+/* Nav Bar */
+.nav-bar{
+  position:sticky;top:0;z-index:100;background:var(--wx-dark);color:#fff;
+  padding:env(safe-area-inset-top,12px) 16px 12px;
+  display:flex;align-items:center;justify-content:space-between;min-height:56px;
+}
+.nav-bar h1{font-size:17px;font-weight:600;flex:1;text-align:center}
+.nav-back{width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;border:none;background:none;color:#fff}
+.nav-action{font-size:14px;color:var(--wx-green);cursor:pointer;border:none;background:none}
+
+/* Bottom Nav */
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:var(--wx-card);border-top:1px solid var(--wx-border);
+  display:flex;padding:6px 0 env(safe-area-inset-bottom,8px);
+}
+.nav-item{flex:1;text-align:center;padding:6px 0;cursor:pointer;color:var(--wx-sub);font-size:10px;transition:color .2s}
+.nav-item.active{color:var(--wx-green)}
+.nav-item .nav-icon{font-size:22px;display:block;margin-bottom:2px}
+
+/* Home */
+.home-hero{
+  background:linear-gradient(135deg,var(--ink),#4a2c1a);
+  border-radius:20px;padding:36px 20px;text-align:center;color:#fff;
+  margin-bottom:16px;position:relative;overflow:hidden;
+}
+.home-hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0v60M0 30h60' stroke='%23C9A96E' stroke-width='.3' opacity='.12'/%3E%3C/svg%3E");
+}
+.home-hero>*{position:relative}
+.home-hero h2{font-size:26px;font-weight:800;margin-bottom:6px;background:linear-gradient(90deg,var(--gold),#fff,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.home-hero p{font-size:13px;opacity:.6;line-height:1.7}
+.open-box{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:20px;padding:15px 44px;
+  background:linear-gradient(135deg,var(--crimson),#D44);
+  border:none;border-radius:30px;color:#fff;font-size:17px;font-weight:700;
+  cursor:pointer;letter-spacing:2px;
+  box-shadow:0 6px 24px rgba(178,34,34,.4);transition:all .2s;
+}
+.open-box:active{transform:scale(.94)}
+.open-box .box-icon{font-size:22px;animation:shake 2s ease-in-out infinite}
+
+/* Stats */
+.stats-bar{display:flex;gap:10px;margin-bottom:16px}
+.stat-card{flex:1;background:var(--wx-card);border-radius:14px;padding:14px 8px;text-align:center}
+.stat-num{font-size:22px;font-weight:800;color:var(--crimson)}
+.stat-label{font-size:11px;color:var(--wx-sub);margin-top:3px}
+
+/* Section */
+.section-title{font-size:16px;font-weight:700;margin:18px 0 10px;display:flex;align-items:center;gap:6px}
+
+/* Leader Card */
+.leader-card{
+  background:var(--wx-card);border-radius:14px;padding:14px;
+  margin-bottom:10px;display:flex;align-items:center;gap:12px;
+  cursor:pointer;transition:all .15s;
+}
+.leader-card:active{transform:scale(.97)}
+.leader-rank{
+  width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;color:#fff;flex-shrink:0;
+}
+.rank-1{background:linear-gradient(135deg,#FFD700,#FFA000)}
+.rank-2{background:linear-gradient(135deg,#C0C0C0,#999)}
+.rank-3{background:linear-gradient(135deg,#CD7F32,#A0522D)}
+.rank-other{background:#E5E5E5;color:#999}
+.leader-info{flex:1;min-width:0}
+.leader-name{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.leader-meta{font-size:12px;color:var(--wx-sub);margin-top:3px}
+.leader-likes{display:flex;align-items:center;gap:4px;color:var(--wx-red);font-size:14px;font-weight:700}
+.leader-avatar{font-size:28px;flex-shrink:0}
+
+/* Badges */
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-left:6px}
+.badge-hot{background:rgba(250,81,81,.1);color:var(--wx-red)}
+.badge-new{background:rgba(7,193,96,.1);color:var(--wx-green)}
+.badge-first{background:rgba(255,152,0,.1);color:var(--wx-orange)}
+
+/* Identity Card */
+.identity-card{
+  background:var(--sepia);border-radius:18px;padding:28px 24px;
+  margin-bottom:20px;position:relative;
+  border:1px solid rgba(139,115,85,.15);animation:scaleIn .5s ease;
+  box-shadow:0 8px 32px rgba(0,0,0,.08);
+}
+.identity-card::before{
+  content:'民國八年';position:absolute;top:14px;right:18px;
+  font-size:11px;color:var(--aged);letter-spacing:4px;opacity:.5;
+}
+.identity-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--gold),transparent);border-radius:18px 18px 0 0;
+}
+.avatar-circle{
+  width:80px;height:80px;border-radius:50%;margin:0 auto 16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:40px;border:3px solid var(--gold);
+  background:linear-gradient(135deg,#f5e6d3,#e8d5b8);
+  animation:pulse 3s ease-in-out infinite;
+}
+.id-name{text-align:center;font-size:24px;font-weight:800;color:var(--ink);margin-bottom:4px}
+.id-role{text-align:center;font-size:13px;color:var(--aged);margin-bottom:20px;letter-spacing:3px}
+.id-stats{display:flex;justify-content:center;gap:24px;margin-bottom:20px}
+.id-stat{text-align:center}
+.id-stat-val{font-size:18px;font-weight:700;color:var(--ink)}
+.id-stat-lbl{font-size:11px;color:var(--aged)}
+.id-bio{font-size:14px;line-height:2;color:var(--ink);border-top:1px dashed var(--aged);padding-top:16px;text-indent:2em}
+.id-era{
+  position:absolute;bottom:16px;right:18px;
+  font-size:11px;color:var(--aged);opacity:.4;
+}
+
+/* Dilemma */
+.dilemma-header{
+  background:linear-gradient(135deg,var(--ink),#3a2015);
+  border-radius:18px;padding:24px;color:#fff;margin-bottom:16px;
+  position:relative;overflow:hidden;
+}
+.dilemma-header::after{
+  content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;
+  background:rgba(201,169,110,.08);border-radius:50%;
+}
+.dilemma-tag{
+  display:inline-block;padding:4px 14px;border-radius:12px;
+  background:rgba(201,169,110,.2);color:var(--gold);
+  font-size:12px;margin-bottom:12px;letter-spacing:2px;
+}
+.dilemma-title{font-size:18px;font-weight:700;line-height:1.6}
+.dilemma-date{font-size:13px;opacity:.5;margin-top:10px}
+
+/* Chat bubble style letter */
+.chat-container{
+  background:var(--wx-bg);border-radius:14px;padding:16px;
+  margin-bottom:16px;
+}
+.chat-bubble{
+  max-width:82%;padding:14px 16px;border-radius:14px;
+  margin-bottom:12px;position:relative;font-size:15px;line-height:1.8;
+  animation:slideUp .5s ease;
+}
+.chat-bubble.left{
+  background:var(--wx-card);margin-right:auto;
+  border-bottom-left-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,.06);
+}
+.chat-bubble.right{
+  background:#95EC69;margin-left:auto;
+  border-bottom-right-radius:4px;
+}
+.chat-time{text-align:center;font-size:11px;color:var(--wx-sub);margin:8px 0}
+.chat-avatar-row{display:flex;align-items:flex-end;gap:8px;margin-bottom:4px}
+.chat-avatar{font-size:28px;flex-shrink:0}
+.chat-sender{font-size:12px;color:var(--wx-sub);margin-bottom:4px}
+.chat-bubble .letter-sig{
+  font-size:13px;color:var(--aged);text-align:right;margin-top:8px;font-style:italic;
+}
+
+/* Letter box (classic) */
+.letter-box{
+  background:var(--sepia);border-radius:14px;padding:22px;
+  margin-bottom:20px;position:relative;
+  box-shadow:0 4px 16px rgba(0,0,0,.08);animation:slideUp .6s ease;
+}
+.letter-box::before{
+  content:'📩 来信';position:absolute;top:-12px;left:20px;
+  background:var(--gold);color:#fff;font-size:12px;
+  padding:3px 14px;border-radius:10px;font-weight:600;
+}
+.letter-stamp{
+  position:absolute;top:12px;right:16px;width:48px;height:56px;
+  border:2px solid var(--crimson);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;opacity:.3;transform:rotate(8deg);
+}
+.letter-from{font-size:13px;color:var(--aged);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.letter-body{
+  font-size:15px;line-height:2.2;color:var(--ink);
+  font-family:"KaiTi","STKaiti",serif;text-indent:2em;
+}
+.letter-sig{text-align:right;margin-top:12px;font-size:14px;color:var(--aged);font-style:italic}
+
+/* Choices */
+.choices{margin-bottom:20px}
+.choice-item{
+  background:var(--wx-card);border:2px solid var(--wx-border);
+  border-radius:14px;padding:16px;margin-bottom:10px;
+  cursor:pointer;transition:all .25s;display:flex;gap:12px;align-items:flex-start;
+}
+.choice-item:active{transform:scale(.97)}
+.choice-item.selected{border-color:var(--wx-green);background:rgba(7,193,96,.04)}
+.choice-item.historical{border-color:var(--gold);background:rgba(201,169,110,.04)}
+.choice-label{
+  width:30px;height:30px;border-radius:50%;
+  background:var(--wx-bg);display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;flex-shrink:0;color:var(--wx-sub);
+}
+.choice-item.selected .choice-label{background:var(--wx-green);color:#fff}
+.choice-item.historical .choice-label{background:var(--gold);color:#fff}
+.choice-text{font-size:15px;line-height:1.6;flex:1}
+.choice-result{
+  font-size:13px;color:var(--aged);margin-top:8px;
+  padding-top:8px;border-top:1px dashed var(--wx-border);display:none;
+  line-height:1.7;
+}
+.choice-item.selected .choice-result,.choice-item.historical .choice-result{display:block}
+
+/* Reply */
+.reply-section{background:var(--wx-card);border-radius:18px;padding:22px;margin-bottom:20px}
+.reply-label{font-size:16px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.reply-hint{font-size:12px;color:var(--wx-sub);margin-bottom:14px;line-height:1.6}
+.reply-textarea{
+  width:100%;min-height:150px;border:2px solid var(--wx-border);
+  border-radius:12px;padding:14px;font-size:15px;line-height:1.8;
+  resize:vertical;font-family:inherit;transition:border-color .2s;
+}
+.reply-textarea:focus{outline:none;border-color:var(--wx-green)}
+.reply-toolbar{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.reply-tool{
+  padding:8px 14px;border:1px solid var(--wx-border);border-radius:20px;
+  background:var(--wx-card);font-size:12px;cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;gap:4px;
+}
+.reply-tool:active{background:var(--wx-bg)}
+.reply-actions{display:flex;gap:10px;margin-top:16px}
+
+/* Buttons */
+.btn-primary{
+  flex:1;padding:15px;background:var(--wx-green);color:#fff;
+  border:none;border-radius:12px;font-size:16px;font-weight:700;
+  cursor:pointer;transition:all .2s;
+}
+.btn-primary:active{opacity:.8;transform:scale(.97)}
+.btn-secondary{
+  padding:15px 20px;background:var(--wx-bg);color:var(--wx-text);
+  border:none;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;
+}
+.btn-outline{
+  padding:15px 20px;background:transparent;color:var(--wx-green);
+  border:2px solid var(--wx-green);border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;
+}
+
+/* Poster */
+.poster-wrap{background:var(--wx-card);border-radius:18px;padding:20px;margin-bottom:16px}
+#posterCanvas{width:100%;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.15)}
+.poster-actions{display:flex;gap:10px;margin-top:16px}
+.poster-actions button{
+  flex:1;padding:12px;border:none;border-radius:12px;
+  font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;
+}
+.poster-actions button:active{transform:scale(.96)}
+.save-btn{background:var(--wx-green);color:#fff}
+.share-btn{background:var(--wx-bg);color:var(--wx-text)}
+.poster-style-row{display:flex;gap:8px;margin-bottom:16px}
+.poster-style-btn{
+  flex:1;padding:10px 8px;border:2px solid var(--wx-border);border-radius:10px;
+  background:var(--wx-card);font-size:12px;text-align:center;cursor:pointer;
+  transition:all .2s;
+}
+.poster-style-btn.active{border-color:var(--gold);background:rgba(201,169,110,.06)}
+
+/* Like */
+.like-section{text-align:center;padding:24px;background:var(--wx-card);border-radius:18px;margin-bottom:16px}
+.like-btn{
+  width:68px;height:68px;border-radius:50%;border:2px solid var(--wx-red);
+  background:transparent;font-size:30px;cursor:pointer;
+  transition:all .3s;display:inline-flex;align-items:center;justify-content:center;
+}
+.like-btn.liked{background:var(--wx-red);color:#fff;animation:likePop .4s ease}
+.like-count{font-size:14px;color:var(--wx-sub);margin-top:10px;font-weight:600}
+
+/* QR */
+.qr-section{background:var(--wx-card);border-radius:18px;padding:24px;text-align:center;margin-bottom:16px}
+.qr-section canvas{margin:12px auto;display:block}
+.qr-section p{font-size:13px;color:var(--wx-sub);margin-top:8px}
+
+/* Achievement Toast */
+.achievement{
+  position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:9999;
+  background:linear-gradient(135deg,#2C1810,#4a2c1a);color:var(--gold);
+  padding:14px 24px;border-radius:14px;display:flex;align-items:center;gap:12px;
+  box-shadow:0 8px 32px rgba(0,0,0,.3);animation:slideUp .5s ease;
+  border:1px solid rgba(201,169,110,.3);font-size:14px;font-weight:600;
+}
+.achievement .ach-icon{font-size:28px}
+
+/* Toast */
+.toast{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:rgba(0,0,0,.8);color:#fff;padding:16px 28px;
+  border-radius:12px;font-size:15px;z-index:9999;
+  animation:scaleIn .3s ease;
+}
+
+/* Timeline Page */
+.timeline-page{padding:0 12px}
+.timeline-line{
+  position:relative;padding-left:32px;
+}
+.timeline-line::before{
+  content:'';position:absolute;left:12px;top:0;bottom:0;width:2px;
+  background:linear-gradient(var(--gold),var(--wx-green));
+}
+.tl-item{position:relative;margin-bottom:24px;animation:slideUp .5s ease}
+.tl-dot{
+  position:absolute;left:-26px;top:4px;width:14px;height:14px;
+  border-radius:50%;border:3px solid var(--gold);background:var(--wx-card);
+}
+.tl-dot.now{border-color:var(--wx-green)}
+.tl-year{font-size:13px;color:var(--aged);font-weight:700;margin-bottom:4px}
+.tl-title{font-size:15px;font-weight:600;margin-bottom:4px}
+.tl-desc{font-size:13px;color:var(--wx-sub);line-height:1.6}
+
+/* Achievements Page */
+.ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ach-card{
+  background:var(--wx-card);border-radius:14px;padding:16px 8px;text-align:center;
+  opacity:.3;transition:all .3s;
+}
+.ach-card.unlocked{opacity:1;box-shadow:0 2px 12px rgba(201,169,110,.15)}
+.ach-icon{font-size:32px;margin-bottom:6px}
+.ach-name{font-size:12px;font-weight:600}
+.ach-desc{font-size:10px;color:var(--wx-sub);margin-top:2px}
+
+/* Modal */
+.modal-overlay{
+  position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);
+  display:flex;align-items:flex-end;justify-content:center;
+  animation:fadeIn .2s ease;
+}
+.modal-sheet{
+  background:var(--wx-card);border-radius:20px 20px 0 0;
+  width:100%;max-width:500px;max-height:80vh;overflow-y:auto;
+  padding:24px;animation:slideUp .3s ease;
+}
+.modal-handle{width:36px;height:4px;background:#ddd;border-radius:2px;margin:0 auto 16px}
+.modal-title{font-size:18px;font-weight:700;margin-bottom:16px}
+
+/* Suggest card */
+.suggest-card{
+  background:linear-gradient(135deg,rgba(7,193,96,.05),rgba(7,193,96,.02));
+  border:1px solid rgba(7,193,96,.2);border-radius:12px;padding:14px;
+  margin-bottom:12px;cursor:pointer;transition:all .2s;
+}
+.suggest-card:active{transform:scale(.97)}
+.suggest-label{font-size:12px;color:var(--wx-green);font-weight:700;margin-bottom:4px}
+.suggest-text{font-size:14px;line-height:1.6;color:var(--wx-text)}
+
+/* Empty state */
+.empty{text-align:center;padding:48px 20px;color:var(--wx-sub)}
+.empty-icon{font-size:48px;margin-bottom:12px}
+.empty-text{font-size:14px;line-height:1.7}
+
+/* Responsive */
+@media(max-width:360px){.home-hero{padding:24px 14px}.letter-body{font-size:14px}.ach-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<div id="splash">
+  <div class="splash-particles" id="particles"></div>
+  <div class="splash-year">1919</div>
+  <div class="splash-vs">⟷</div>
+  <div class="splash-year2">2026</div>
+  <div class="splash-sub">百 年 盲 盒 对 话</div>
+  <div class="splash-desc">穿越百年时空，与五四的灵魂对话<br>一封来自过去的信，等你回复</div>
+  <button class="splash-enter" onclick="enterApp()">开启盲盒 →</button>
+  <div class="splash-stats">
+    <div class="splash-stat"><div class="splash-stat-num" id="splashDialogues">0</div><div class="splash-stat-label">对话</div></div>
+    <div class="splash-stat"><div class="splash-stat-num" id="splashLikes">0</div><div class="splash-stat-label">点赞</div></div>
+    <div class="splash-stat"><div class="splash-stat-num" id="splashUsers">1,247</div><div class="splash-stat-label">参与者</div></div>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+  <div class="nav-bar" id="navBar">
+    <button class="nav-back" id="navBack" onclick="goBack()">‹</button>
+    <h1 id="navTitle">百年盲盒对话</h1>
+    <button class="nav-action" id="navAction" onclick="navAction()"></button>
+  </div>
+  <div id="pageHome" class="page"></div>
+  <div id="pageIdentity" class="page hidden"></div>
+  <div id="pageDilemma" class="page hidden"></div>
+  <div id="pageResult" class="page hidden"></div>
+  <div id="pageRanking" class="page hidden"></div>
+  <div id="pageTimeline" class="page hidden"></div>
+  <div id="pageAchievements" class="page hidden"></div>
+  <div class="bottom-nav" id="bottomNav">
+    <div class="nav-item active" onclick="switchTab('home')"><span class="nav-icon">🏠</span>首页</div>
+    <div class="nav-item" onclick="switchTab('timeline')"><span class="nav-icon">📜</span>时间线</div>
+    <div class="nav-item" onclick="switchTab('ranking')"><span class="nav-icon">🏆</span>排行</div>
+    <div class="nav-item" onclick="switchTab('achievements')"><span class="nav-icon">🎖️</span>成就</div>
+  </div>
+</div>
+
+<script>
+// ==============================
+//  百年盲盒对话 · 完整扩展版
+// ==============================
+
+// ===== HISTORICAL DATA =====
+const IDENTITIES = [
+  {
+    id:'beiDa', name:'张承志', role:'北京大学·文科学生', avatar:'🎓',
+    era:'1919年3月·北京',
+    bio:'二十岁，祖籍湖南，考入北大文科已一年。常去红楼图书馆借阅《新青年》，与同学讨论白话文运动。家境殷实，但对包办婚姻深感不满。他仰慕陈独秀、胡适，梦想以文章唤醒国人。',
+    stats:{age:20,school:'北京大学',thought:'民主与科学'},
+    dilemma:{
+      tag:'思想觉醒·1919年3月', title:'你所在的北大将组织学生游行，抗议巴黎和会外交失败',
+      date:'张承志 于北京大学红楼',
+      letter:`承志吾弟：
+
+见字如面。近日巴黎和会消息传来，山东权益恐将让与日本，举国愤慨。北京各校已秘密串联，拟于近日游行示威。吾等热血青年，岂能坐视？
+
+然兄闻军警已在校外布防，此次行动恐有牢狱之灾。家父来信殷殷期盼功名，若被捕入狱，恐伤二老之心。
+
+吾心矛盾至极。望弟为吾一决。`,
+      choices:[
+        {label:'A',text:'挺身而出，参加游行。国难当头，个人得失不足挂齿。',result:'历史选择：多数学生选择了这条路。1919年5月4日，3000余名学生走上街头，五四运动爆发，开启了中国新民主主义革命的序幕。'},
+        {label:'B',text:'以笔代剑，撰写文章声援。文人救国另有其道。',result:'历史选择：一批知识分子选择了舆论战场。他们创办报刊、撰写檄文，用思想启蒙推动社会变革，影响同样深远。'},
+        {label:'C',text:'暂避锋芒，联络地方力量，做长远打算。',result:'历史选择：部分人选择了回乡办学、组织工人。这些人后来成为中国共产党早期组织的重要力量。'}
+      ],
+      hints:['参考：五四运动的核心精神是什么？','想想：一百年后的今天，青年如何表达爱国热情？','可以从"个人与时代"的关系角度思考']
+    }
+  },
+  {
+    id:'shangGong', name:'李阿根', role:'上海·纱厂工人', avatar:'🏭',
+    era:'1919年6月·上海',
+    bio:'二十三岁，江苏南通人，十四岁来上海日资纱厂做工。每日工作十二小时，月薪仅够糊口。工友中有人偷偷传阅传单，说工人应该团结起来争取权利。',
+    stats:{age:23,school:'未受教育',thought:'劳工觉醒'},
+    dilemma:{
+      tag:'劳工觉醒·1919年6月', title:'上海工人响应学生运动，酝酿全市罢工',
+      date:'李阿根 于上海杨树浦工棚',
+      letter:`大哥：
+
+俺是阿根。厂里最近闹得凶，说要罢工。有人来厂里讲，说学生在北京被打被抓了，现在要咱们工人也站出来。
+
+俺心里打鼓。罢工就没工钱，家里老娘还指望俺每月寄钱。可工友老张说，不做一回人，一辈子就是牛马。日本人管着厂子，动不动就打人罚钱，俺也受够了。
+
+罢还是不罢，俺拿不定主意。给俺指条路。`,
+      choices:[
+        {label:'A',text:'罢工！一个人的力量有限，团结工友才有希望改变命运。',result:'历史选择：1919年6月5日起，上海工人开始大规模罢工，最终发展为"六三运动"，工人阶级首次以独立姿态登上政治舞台。'},
+        {label:'B',text:'先组织工友互助会，积蓄力量，等待时机。',result:'历史选择：五四运动后，各地工人组织逐渐发展壮大，为后来的工人运动和中国共产党的成立奠定了组织基础。'},
+        {label:'C',text:'悄悄学习识字，提升自己，将来用知识改变处境。',result:'历史选择：五四运动后，各地工人夜校蓬勃兴起。许多工人通过学习觉醒，成为后来工人运动的骨干。'}
+      ],
+      hints:['想想：工人运动的意义是什么？','参考：今天的劳动者权益如何保障？','可以从"团结"和"觉醒"的角度思考']
+    }
+  },
+  {
+    id:'xinQingNian', name:'陈若兰', role:'新青年·热心读者', avatar:'📖',
+    era:'1919年4月·绍兴',
+    bio:'十九岁，浙江绍兴人，父亲是前清秀才。她偷偷订阅《新青年》已半年，对白话文运动心向往之。然而父亲视新思想为洪水猛兽，烧掉了她藏在枕下的杂志。',
+    stats:{age:19,school:'私塾旁听',thought:'女性解放'},
+    dilemma:{
+      tag:'女性觉醒·1919年4月', title:'父亲发现你读"禁书"，决定将你嫁人',
+      date:'陈若兰 于绍兴家中',
+      letter:`若兰敬启：
+
+吾乃《新青年》读者，与君同好。闻令尊欲将你嫁与素不相识之人，心甚忧之。
+
+近来北京有女校招生，邓颖超等在天津亦创办了女权组织。此或为脱身之计。
+
+然你一女子，孤身上路，世道险恶。且家中若知你出走，恐颜面尽失，后果难料。
+
+何去何从，请自斟酌。`,
+      choices:[
+        {label:'A',text:'离家出走，北上求学。宁为玉碎，不为瓦全。',result:'历史选择：五四前后，一批勇敢的女性冲破家庭束缚，外出求学。涌现了向警予、蔡畅等杰出女性，推动了中国妇女解放运动。'},
+        {label:'B',text:'暂从婚事，但坚持读书学习，伺机而动。',result:'历史选择：许多新女性在婚姻中寻找到了支持者，与志同道合的伴侣一起投身社会变革。'},
+        {label:'C',text:'写信给《新青年》编辑部求助，借助社会舆论抗争。',result:'历史选择：五四时期，媒体成为推动社会进步的重要力量。许多家庭悲剧经报道后引发社会讨论。'}
+      ],
+      hints:['参考：女性解放是一步到位还是循序渐进？','想想：今天的女性拥有哪些权利？','可以从"个人勇气"与"社会支持"的关系思考']
+    }
+  },
+  {
+    id:'liuRi', name:'周子明', role:'留日青年·东京', avatar:'🗼',
+    era:'1919年5月·东京',
+    bio:'二十二岁，广东人，在东京高等工业学校留学。目睹日本对中国的野心，内心极为痛苦。留学生群体中争论激烈。',
+    stats:{age:22,school:'东京高工',thought:'救亡图存'},
+    dilemma:{
+      tag:'民族觉醒·1919年5月', title:'留日学生决定全体回国，抗议巴黎和会',
+      date:'周子明 于东京神田区',
+      letter:`子明兄：
+
+在东瀛见字。昨日神田区中国留学生集会，决议全体归国，以示抗议。会上群情激愤，有人痛哭，有人断指血书。
+
+兄尚有半年毕业，若此时归国，数年心血付之东流。然家国沦丧，学成又有何用？
+
+日人近来对中国留学生冷眼相待，处处刁难。居此地，实感屈辱万分。
+
+归否？望兄速决。`,
+      choices:[
+        {label:'A',text:'立即回国，投身运动。学位可以再读，国家存亡在此一举。',result:'历史选择：约4000名留日学生陆续回国。带回先进知识和国际视野，成为推动中国现代化的重要力量。'},
+        {label:'B',text:'坚持完成学业，但积极在国内刊物发表文章声援。',result:'历史选择：一批留学生在海外坚持学习的同时参与国内运动。学成归来后，成为各领域的先驱。'},
+        {label:'C',text:'转向研究日本近代化经验，为中国寻找自强之路。',result:'历史选择：部分留日学生深入研究明治维新的成功经验，翻译介绍到国内，影响了制度改革。'}
+      ],
+      hints:['参考：留学报国传统延续至今','想想：今天的留学生如何报效祖国？','可以从"短期行动"与"长期建设"的角度思考']
+    }
+  },
+  {
+    id:'shangRen', name:'沈敬之', role:'民族实业家·上海', avatar:'💰',
+    era:'1919年6月·上海',
+    bio:'三十五岁，上海人，在杨树浦经营小型纺织厂。"实业救国"是他一贯的信念，但日资工厂挤压民族工业的生存空间。',
+    stats:{age:35,school:'教会学校',thought:'实业救国'},
+    dilemma:{
+      tag:'实业救国·1919年6月', title:'抵制日货运动中，你的工厂面临两难抉择',
+      date:'沈敬之 于上海寓所',
+      letter:`敬之先生台鉴：
+
+近来抵制日货风潮日盛，国货销路大开，此乃千载难逢之机遇。然吾亦有忧虑：
+
+一、吾厂机器原料半数购自日本，若全面断绝，生产难以为继；
+二、若趁势扩产，需大笔资金，银行贷款利息甚高；
+三、工人近来受罢工风潮影响，亦有不安之兆。
+
+先生素有实业救国之志，当下如何抉择，请速定夺。`,
+      choices:[
+        {label:'A',text:'全面转向国货，不惜代价寻找国产替代原料。',result:'历史选择：荣氏兄弟等实业家抓住机遇，大力推广国货，推动了民族工业的发展。'},
+        {label:'B',text:'与同行联合成立商会，集体议价，降低对日依赖。',result:'历史选择：五四运动催生了大量行业商会，增强了民族工业的整体竞争力。'},
+        {label:'C',text:'提高工人待遇，改善劳资关系，增强工厂凝聚力。',result:'历史选择：部分开明实业家改善工人待遇，建立了工人教育、医疗等福利制度。'}
+      ],
+      hints:['参考：国货运动对民族工业的影响','想想：今天的"中国制造"如何走向世界？','可以从"商业利益"与"家国情怀"的关系思考']
+    }
+  },
+  {
+    id:'jiaoYuan', name:'胡明远', role:'中学教员·长沙', avatar:'📚',
+    era:'1919年5月·长沙',
+    bio:'二十八岁，湖南人，在长沙第一师范附属小学任教。深受新文化运动影响，常向学生传播民主与科学的思想。',
+    stats:{age:28,school:'湖南一师',thought:'教育启蒙'},
+    dilemma:{
+      tag:'教育启蒙·1919年5月', title:'湖南军阀禁止学校讨论"过激思想"',
+      date:'胡明远 于长沙岳麓山下',
+      letter:`明远兄：
+
+近来湘省当局加紧言论管控，校长已三令五申，不得在课堂上传播"过激言论"。昨日同事因在课堂讲授《新青年》文章，被记过处分。
+
+吾等教书育人，难道连真话都不能说了吗？润之说应办一份报纸，以白话文面向大众。然办报需资金、需场地，风险亦大。
+
+兄素来稳健，不知此事如何是好？`,
+      choices:[
+        {label:'A',text:'参与创办《湘江评论》，用白话文开启民智。',result:'历史选择：1919年7月，《湘江评论》创刊，以犀利的白话文宣传新思想，影响了整整一代湖南青年。'},
+        {label:'B',text:'在课堂上以"讲故事"的方式传播新思想，规避检查。',result:'历史选择：许多教师在高压下选择了巧妙的传播方式，潜移默化地培养学生的批判精神。'},
+        {label:'C',text:'组织课外读书会，在学校围墙之外继续启蒙。',result:'历史选择：五四时期各地涌现大量读书会，成为新思想传播的重要载体。'}
+      ],
+      hints:['参考：教育者的社会责任','想想：今天的老师如何引导学生思考？','可以从"直接"与"间接"的启蒙方式思考']
+    }
+  },
+  {
+    id:'baoGuan', name:'赵无疾', role:'前清遗少·北京', avatar:'🎩',
+    era:'1919年4月·北京',
+    bio:'二十五岁，旗人后裔，家道中落。祖父曾任清朝四品官员，如今靠变卖家产度日。他既留恋旧日荣光，又不得不面对新时代的冲击。',
+    stats:{age:25,school:'家塾',thought:'新旧之争'},
+    dilemma:{
+      tag:'身份困境·1919年4月', title:'新时代浪潮下，旧式文人的出路在哪里？',
+      date:'赵无疾 于北京西城旧宅',
+      letter:`无疾兄台鉴：
+
+祖父遗物又典当一批，家中度日渐难。街上学生高呼"打倒孔家店"，吾心中五味杂陈。
+
+祖上诗书传家，难道竟成罪过？然时移世易，白话文兴起，吾辈骈文功夫竟无用武之地。
+
+有友人劝我去报馆做事，亦有人邀吾入新式学堂教书。可吾心中实无底气——吾之所学，究竟还有价值否？
+
+兄也是旧家子弟，当知吾心之苦。`,
+      choices:[
+        {label:'A',text:'拥抱变化，学习白话文，在新旧之间寻找平衡。',result:'历史选择：许多旧式文人转型成功，成为沟通传统与现代的桥梁。他们在报刊、教育等领域发挥独特价值。'},
+        {label:'B',text:'坚守传统文化的价值，用现代方式重新诠释。',result:'历史选择：一批学者致力于整理国故，用科学方法研究传统，开创了国学研究的新局面。'},
+        {label:'C',text:'学习一门实用技能，先解决生计，再谈理想。',result:'历史选择：务实的选择。许多人在时代的变迁中先求生存，再寻找精神归宿，这也是一种智慧。'}
+      ],
+      hints:['参考：传统与现代如何共存？','想想：今天的我们如何看待传统文化？','可以从"传承"与"创新"的关系思考']
+    }
+  },
+  {
+    id:'xinSheng', name:'林觉新', role:'归国华侨·广州', avatar:'🚢',
+    era:'1919年7月·广州',
+    bio:'二十六岁，广东台山人，在美国旧金山长大。受"民主"理想感召回国，却发现祖国与想象中大不相同。军阀混战、列强环伺，让他深感困惑。',
+    stats:{age:26,school:'美国中学',thought:'中西碰撞'},
+    dilemma:{
+      tag:'归国困惑·1919年7月', title:'满怀理想归国，却发现现实如此骨感',
+      date:'林觉新 于广州沙面',
+      letter:`觉新吾友：
+
+自旧金山归国已两月，所见所闻，令人心碎。
+
+在美时，吾以为回国便能大展拳脚，以西方之学报效祖国。然归来方知：军阀只顾争权，百姓苦不堪言，所谓"民主共和"徒有虚名。
+
+有同乡劝我留在广州做翻译，收入尚可；亦有友人邀我北上，参加学生运动。可吾一无根基，二无靠山，纵有满腔热血，又能如何？
+
+在美所学，究竟该如何用？请兄指点。`,
+      choices:[
+        {label:'A',text:'发挥海外经验优势，在广州办实业，从经济上帮助同胞。',result:'历史选择：归国华侨在广东创办了大量实业，从日化到食品，成为民族工商业的重要力量。'},
+        {label:'B',text:'做中西文化的桥梁，翻译介绍西方先进思想。',result:'历史选择：许多归国华侨成为翻译家、教育家，将西方科学与人文思想引入中国。'},
+        {label:'C',text:'深入民间，了解真实的中国，再决定如何贡献。',result:'历史选择：一些归国者选择先"接地气"，深入了解国情后才投身建设，避免了"水土不服"。'}
+      ],
+      hints:['参考：海归人才的本土化挑战','想想：今天的归国人才如何融入？','可以从"理想"与"现实"的关系思考']
+    }
+  }
+];
+
+// ===== ACHIEVEMENTS =====
+const ACHIEVEMENTS = [
+  {id:'first_box',name:'初次相遇',icon:'🤝',desc:'开启第一个盲盒',check:d=>d.length>=1},
+  {id:'five_boxes',name:'时空旅人',icon:'🚀',desc:'完成5次对话',check:d=>d.length>=5},
+  {id:'ten_boxes',name:'百年信使',icon:'💌',desc:'完成10次对话',check:d=>d.length>=10},
+  {id:'all_identities',name:'众生百态',icon:'🎭',desc:'体验所有身份',check:d=>new Set(d.map(x=>x.identityId)).size>=IDENTITIES.length},
+  {id:'long_reply',name:'鸿篇巨制',icon:'📝',desc:'写出100字以上的回信',check:d=>d.some(x=>x.replyText.length>=100)},
+  {id:'first_like',name:'共鸣之心',icon:'❤️',desc:'收到第一个点赞',check:(d,l)=>Object.values(l).some(v=>v>0)},
+  {id:'top_likes',name:'万人空巷',icon:'🌟',desc:'单条回信获10赞',check:(d,l)=>Object.values(l).some(v=>v>=10)},
+  {id:'worker',name:'工人之友',icon:'⚒️',desc:'回复工人的来信',check:d=>d.some(x=>x.identityId==='shangGong')},
+  {id:'woman',name:'她力量',icon:'♀️',desc:'回复女性的来信',check:d=>d.some(x=>x.identityId==='xinQingNian')},
+  {id:'overseas',name:'海归知音',icon:'🌊',desc:'回复留学生/华侨的来信',check:d=>d.some(x=>['liuRi','xinSheng'].includes(x.identityId))},
+  {id:'merchant',name:'商道同行',icon:'📊',desc:'回复实业家的来信',check:d=>d.some(x=>x.identityId==='shangRen')},
+  {id:'educator',name:'师者仁心',icon:'🍎',desc:'回复教师的来信',check:d=>d.some(x=>x.identityId==='jiaoYuan')},
+];
+
+// ===== CONFIG =====
+const API_BASE = location.origin; // 同源部署，如需跨域改为 'https://your-api.com'
+const ENABLE_API = true; // false 则回退到纯 localStorage
+
+// ===== STATE =====
+let currentPage = 'home';
+let currentIdentity = null;
+let currentDilemma = null;
+let selectedChoice = null;
+let userReply = '';
+let posterStyle = 0;
+let dialogues = JSON.parse(localStorage.getItem('cd_dialogues')||'[]');
+let likes = JSON.parse(localStorage.getItem('cd_likes')||'{}');
+let unlockedAch = JSON.parse(localStorage.getItem('cd_achievements')||'[]');
+let globalStats = { totalDialogues: 0, totalLikes: 0, totalUsers: 0, onlineClients: 0 };
+let eventSource = null;
+
+// ===== UTILS =====
+const $=id=>document.getElementById(id);
+const show=el=>(typeof el==='string'?$(el):el).classList.remove('hidden');
+const hide=el=>(typeof el==='string'?$(el):el).classList.add('hidden');
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2200)}
+
+// ===== API LAYER =====
+async function apiCall(path, opts = {}) {
+  if (!ENABLE_API) return null;
+  try {
+    const res = await fetch(API_BASE + path, {
+      headers: { 'Content-Type': 'application/json', ...opts.headers },
+      ...opts,
+    });
+    return await res.json();
+  } catch (e) {
+    console.warn('API 调用失败，使用本地数据:', e.message);
+    return null;
+  }
+}
+
+async function apiSaveDialogue(d) {
+  const result = await apiCall('/api/dialogues', {
+    method: 'POST',
+    body: JSON.stringify({
+      identityId: d.identityId,
+      identityName: d.identityName,
+      identityRole: d.identityRole,
+      identityAvatar: d.identityAvatar,
+      identityEra: d.identityEra,
+      dilemmaTag: d.dilemmaTag,
+      dilemmaTitle: d.dilemmaTitle,
+      dilemmaLetter: d.dilemmaLetter,
+      choiceIndex: d.choiceIndex,
+      choiceLabel: d.choiceLabel,
+      choiceText: d.choiceText,
+      choiceResult: d.choiceResult,
+      replyText: d.replyText,
+    }),
+  });
+  if (result?.success) {
+    // 用服务端 ID 替换本地 ID
+    d.serverId = result.data.id;
+  }
+  return result;
+}
+
+async function apiLike(id) {
+  const serverId = dialogues.find(d => d.id === id)?.serverId || id;
+  return await apiCall(`/api/dialogues/${serverId}/like`, { method: 'POST' });
+}
+
+async function apiFetchStats() {
+  const result = await apiCall('/api/stats');
+  if (result?.success) {
+    globalStats = result.data;
+    // 更新首页统计
+    const el = $('splashDialogues'); if (el) el.textContent = globalStats.totalDialogues;
+    const el2 = $('splashLikes'); if (el2) el2.textContent = globalStats.totalLikes.toLocaleString();
+    const el3 = $('splashUsers'); if (el3) el3.textContent = globalStats.totalUsers.toLocaleString();
+  }
+}
+
+async function apiFetchLeaderboard() {
+  const result = await apiCall('/api/dialogues?sort=likes&limit=20');
+  if (result?.success && result.data?.length) return result.data;
+  return null;
+}
+
+async function apiGetAISuggestion(payload) {
+  return await apiCall('/api/suggest', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+// ===== SSE 实时连接 =====
+function connectSSE() {
+  if (!ENABLE_API || eventSource) return;
+  try {
+    eventSource = new EventSource(API_BASE + '/api/events');
+    eventSource.addEventListener('stats', e => {
+      try {
+        const data = JSON.parse(e.data);
+        globalStats = data;
+        const onlineEl = document.getElementById('onlineCount');
+        if (onlineEl) onlineEl.textContent = data.onlineClients;
+      } catch (err) {}
+    });
+    eventSource.addEventListener('new-dialogue', e => {
+      try {
+        const data = JSON.parse(e.data);
+        toast(`${data.identityAvatar} 新的跨时空对话！`);
+      } catch (err) {}
+    });
+    eventSource.addEventListener('like', e => {
+      try {
+        const data = JSON.parse(e.data);
+        const el = document.getElementById('likeCount_' + data.id);
+        if (el) el.textContent = data.likeCount + ' 人点赞';
+      } catch (err) {}
+    });
+    eventSource.onerror = () => {
+      try{eventSource.close()}catch(e){}
+      eventSource = null;
+      setTimeout(() => { try{connectSSE()}catch(e){} }, 10000);
+    };
+  } catch (e) { eventSource = null; }
+}
+function showAchievement(ach){
+  const el=document.createElement('div');el.className='achievement';
+  el.innerHTML=`<span class="ach-icon">${ach.icon}</span><span>解锁成就：${ach.name}</span>`;
+  document.body.appendChild(el);setTimeout(()=>el.remove(),3500);
+}
+function rand(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function checkAchievements(){
+  const prev=unlockedAch.length;
+  ACHIEVEMENTS.forEach(a=>{
+    if(!unlockedAch.includes(a.id)&&a.check(dialogues,likes)){
+      unlockedAch.push(a.id);showAchievement(a);
+    }
+  });
+  if(unlockedAch.length>prev) localStorage.setItem('cd_achievements',JSON.stringify(unlockedAch));
+}
+function saveDialogues(){localStorage.setItem('cd_dialogues',JSON.stringify(dialogues))}
+function saveLikes(){localStorage.setItem('cd_likes',JSON.stringify(likes))}
+
+// ===== AUDIO =====
+const AudioCtx=window.AudioContext||window.webkitAudioContext;
+let audioCtx;
+function playTone(freq,dur,type='sine',vol=.1){
+  try{
+    if(!audioCtx)audioCtx=new AudioCtx();
+    const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+    o.type=type;o.frequency.value=freq;g.gain.value=vol;
+    g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);
+    o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur);
+  }catch(e){}
+}
+function sfxOpen(){playTone(523,.15);setTimeout(()=>playTone(659,.15),100);setTimeout(()=>playTone(784,.2),200)}
+function sfxClick(){playTone(880,.08,'sine',.05)}
+function sfxLike(){playTone(523,.1);setTimeout(()=>playTone(784,.15),80);setTimeout(()=>playTone(1047,.2),160)}
+function sfxAchievement(){playTone(523,.12);setTimeout(()=>playTone(659,.12),100);setTimeout(()=>playTone(784,.12),200);setTimeout(()=>playTone(1047,.25),300)}
+
+// ===== SPLASH =====
+function initSplash(){
+  const pc=$('particles');
+  for(let i=0;i<20;i++){
+    const p=document.createElement('div');p.className='splash-particle';
+    p.style.left=Math.random()*100+'%';p.style.top=Math.random()*100+'%';
+    p.style.animationDelay=Math.random()*3+'s';p.style.animationDuration=(2+Math.random()*3)+'s';
+    pc.appendChild(p);
+  }
+  // 本地统计（立即显示）
+  const el1=$('splashDialogues');if(el1)el1.textContent=dialogues.length;
+  const el2=$('splashLikes');if(el2)el2.textContent=Object.values(likes).reduce((a,b)=>a+b,0);
+  const el3=$('splashUsers');if(el3)el3.textContent='—';
+  // API 统计（异步更新，失败不影响页面）
+  try{
+    apiFetchStats().then(()=>{
+      const e1=$('splashDialogues');if(e1)e1.textContent=globalStats.totalDialogues||dialogues.length;
+      const e2=$('splashLikes');if(e2)e2.textContent=(globalStats.totalLikes||0).toLocaleString();
+      const e3=$('splashUsers');if(e3)e3.textContent=(globalStats.totalUsers||0).toLocaleString()||'—';
+    }).catch(()=>{});
+  }catch(e){}
+  // 连接 SSE（异步，失败不影响）
+  try{connectSSE()}catch(e){}
+}
+function enterApp(){
+  sfxOpen();
+  $('splash').classList.add('fade-out');
+  setTimeout(()=>{hide('splash');show('app');renderHome()},800);
+}
+
+// ===== NAV =====
+function navigateTo(page){
+  ['pageHome','pageIdentity','pageDilemma','pageResult','pageRanking','pageTimeline','pageAchievements'].forEach(hide);
+  show('page'+page.charAt(0).toUpperCase()+page.slice(1));
+  currentPage=page;window.scrollTo(0,0);
+  const titles={home:'百年盲盒对话',identity:'你的1919身份',dilemma:'跨时空来信',result:'对话海报',ranking:'回信排行榜',timeline:'历史时间线',achievements:'成就徽章'};
+  $('navTitle').textContent=titles[page]||'百年盲盒对话';
+  $('navBack').style.display=page==='home'?'none':'flex';
+  $('navAction').textContent=page==='dilemma'?'提示 💡':'';
+  document.querySelectorAll('.nav-item').forEach((n,i)=>{
+    n.classList.toggle('active',(page==='home'&&i===0)||(page==='timeline'&&i===1)||(page==='ranking'&&i===2)||(page==='achievements'&&i===3));
+  });
+}
+function goBack(){
+  const map={identity:'home',dilemma:'identity',result:'home',ranking:'home',timeline:'home',achievements:'home'};
+  if(map[currentPage]){sfxClick();navigateTo(map[currentPage])}
+}
+function navAction(){if(currentPage==='dilemma')showHints()}
+function switchTab(tab){
+  sfxClick();
+  if(tab==='home')renderHome();
+  else if(tab==='timeline')renderTimeline();
+  else if(tab==='ranking')renderRanking();
+  else if(tab==='achievements')renderAchievements();
+}
+
+// ===== HOME =====
+function renderHome(){
+  navigateTo('home');
+  const td=Math.max(dialogues.length,globalStats.totalDialogues||0);
+  const tl=Object.values(likes).reduce((a,b)=>a+b,0)+(globalStats.totalLikes||0);
+
+  $('pageHome').innerHTML=`
+    <div class="home-hero">
+      <h2>百年盲盒对话</h2>
+      <p>穿越时空，与1919年的灵魂对话</p>
+      <div style="font-size:12px;color:rgba(201,169,110,.5);margin-top:8px" id="onlineHint">🌐 在线人数加载中...</div>
+      <button class="open-box" onclick="openBlindBox()"><span class="box-icon">📦</span>开启盲盒</button>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-card"><div class="stat-num">${td}</div><div class="stat-label">跨时空对话</div></div>
+      <div class="stat-card"><div class="stat-num">${tl.toLocaleString()}</div><div class="stat-label">总点赞</div></div>
+      <div class="stat-card"><div class="stat-num">${IDENTITIES.length}</div><div class="stat-label">历史身份</div></div>
+    </div>
+    <div class="section-title">🏆 最佳回信 <span style="font-size:12px;color:var(--wx-sub);font-weight:400;margin-left:auto;cursor:pointer" onclick="loadLeaderboard()">🔄 刷新</span></div>
+    <div id="leaderboardArea">${renderTopDialogues(5)}</div>
+    <div style="height:16px"></div>
+    <div class="section-title">🎭 可解锁身份</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
+      ${IDENTITIES.map(id=>{
+        const done=dialogues.some(d=>d.identityId===id.id);
+        return `<div style="padding:8px 14px;background:${done?'rgba(7,193,96,.08)':'var(--wx-card)'};border-radius:20px;font-size:13px;border:1px solid ${done?'var(--wx-green)':'var(--wx-border)'}">${done?'✅':'🔒'} ${id.avatar} ${id.name}</div>`;
+      }).join('')}
+    </div>
+  `;
+
+  // 更新在线人数
+  if(globalStats.onlineClients){
+    const hint=$('onlineHint');
+    if(hint) hint.textContent=`🌐 当前 ${globalStats.onlineClients} 人在线`;
+  }
+
+  // 异步加载远程排行榜
+  loadLeaderboard();
+}
+
+async function loadLeaderboard(){
+  const remote=await apiFetchLeaderboard();
+  if(!remote||!remote.length) return;
+  const area=$('leaderboardArea');
+  if(!area) return;
+  area.innerHTML=remote.slice(0,5).map((d,i)=>{
+    const lk=d.likeCount||0;
+    const rc=i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank-other';
+    const badge=i===0?'<span class="badge badge-hot">🔥 最热</span>':'';
+    const ts=d.createdAt?new Date(d.createdAt).toLocaleDateString('zh-CN'):'';
+    return `<div class="leader-card" onclick="viewRemoteDialogue('${d.id}')">
+      <div class="leader-rank ${rc}">${i+1}</div>
+      <div class="leader-avatar">${d.identityAvatar||'📖'}</div>
+      <div class="leader-info">
+        <div class="leader-name">${d.identityName||'匿名'}·${d.identityRole||''}${badge}</div>
+        <div class="leader-meta">${ts} · ${(d.replyText||'').slice(0,25)}…</div>
+      </div>
+      <div class="leader-likes">❤️ ${lk}</div>
+    </div>`;
+  }).join('');
+}
+
+function viewRemoteDialogue(serverId){
+  // 从本地找，找不到就用 API
+  const local=dialogues.find(d=>d.serverId===serverId);
+  if(local){viewDialogue(local.id);return}
+  apiCall(`/api/dialogues/${serverId}`).then(r=>{
+    if(r?.success){
+      const d=r.data;
+      currentIdentity=IDENTITIES.find(x=>x.id===d.identityId);
+      currentDilemma=currentIdentity?.dilemma;
+      selectedChoice=d.choiceIndex;userReply=d.replyText;
+      renderResult({id:'remote_'+d.id,...d});
+    }
+  });
+}
+function renderTopDialogues(n){
+  const sorted=[...dialogues].sort((a,b)=>(likes[b.id]||0)-(likes[a.id]||0)).slice(0,n);
+  if(!sorted.length) return '<div class="empty"><div class="empty-icon">📭</div><div class="empty-text">还没有对话记录<br>开启盲盒开始第一次对话吧！</div></div>';
+  return sorted.map((d,i)=>{
+    const lk=likes[d.id]||0;
+    const rc=i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank-other';
+    const badge=i===0?'<span class="badge badge-hot">🔥 最热</span>':'';
+    return `<div class="leader-card" onclick="viewDialogue('${d.id}')">
+      <div class="leader-rank ${rc}">${i+1}</div>
+      <div class="leader-avatar">${d.identityAvatar}</div>
+      <div class="leader-info">
+        <div class="leader-name">${d.identityName}${badge}</div>
+        <div class="leader-meta">${d.timestamp} · ${d.replyText.slice(0,25)}…</div>
+      </div>
+      <div class="leader-likes">❤️ ${lk}</div>
+    </div>`;
+  }).join('');
+}
+
+// ===== BLIND BOX =====
+function openBlindBox(){
+  sfxClick();
+  // Weighted random: prefer unvisited
+  const visited=new Set(dialogues.map(d=>d.identityId));
+  const unvisited=IDENTITIES.filter(i=>!visited.has(i.id));
+  currentIdentity=unvisited.length>0?rand(unvisited):rand(IDENTITIES);
+  currentDilemma=currentIdentity.dilemma;
+  selectedChoice=null;userReply='';
+  renderIdentity();
+}
+
+// ===== IDENTITY =====
+function renderIdentity(){
+  navigateTo('identity');
+  const id=currentIdentity;
+  $('pageIdentity').innerHTML=`
+    <div class="identity-card">
+      <div class="avatar-circle">${id.avatar}</div>
+      <div class="id-name">${id.name}</div>
+      <div class="id-role">${id.role}</div>
+      <div class="id-stats">
+        <div class="id-stat"><div class="id-stat-val">${id.stats.age}</div><div class="id-stat-lbl">年龄</div></div>
+        <div class="id-stat"><div class="id-stat-val">${id.stats.school}</div><div class="id-stat-lbl">学历</div></div>
+        <div class="id-stat"><div class="id-stat-val">${id.stats.thought}</div><div class="id-stat-lbl">思潮</div></div>
+      </div>
+      <div class="id-bio">${id.bio}</div>
+      <div class="id-era">${id.era}</div>
+    </div>
+    <button class="btn-primary" onclick="renderDilemma()">📬 查看来信</button>
+    <div style="height:80px"></div>
+  `;
+}
+
+// ===== DILEMMA =====
+function renderDilemma(){
+  navigateTo('dilemma');
+  const d=currentDilemma;
+  const hints=d.hints||[];
+  $('pageDilemma').innerHTML=`
+    <div class="dilemma-header">
+      <div class="dilemma-tag">${d.tag}</div>
+      <div class="dilemma-title">${d.title}</div>
+      <div class="dilemma-date">📍 ${d.date}</div>
+    </div>
+
+    <div class="letter-box">
+      <div class="letter-stamp">📮</div>
+      <div class="letter-from">📩 来自 ${currentIdentity.name}（${currentIdentity.role}）</div>
+      <div class="letter-body">${d.letter.replace(/\n/g,'<br>')}</div>
+      <div class="letter-sig">—— ${currentIdentity.name} 叩首</div>
+    </div>
+
+    <div class="section-title">📋 如果是你，1919年会怎么选？</div>
+    <div class="choices" id="choicesList">
+      ${d.choices.map((c,i)=>`
+        <div class="choice-item" onclick="selectChoice(${i})" id="choice${i}">
+          <div class="choice-label">${c.label}</div>
+          <div style="flex:1">
+            <div class="choice-text">${c.text}</div>
+            <div class="choice-result">${c.result}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="reply-section">
+      <div class="reply-label">✉️ 以2026年的视角写一封回信</div>
+      <div class="reply-hint">你会给百年前的他/她什么建议？想象你真的穿越时空寄出这封信。</div>
+      <textarea class="reply-textarea" id="replyInput" placeholder="亲爱的朋友，从2026年回望，我想对你说……" oninput="updateCharCount()"></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+        <span style="font-size:12px;color:var(--wx-sub)" id="charCount">0 字</span>
+      </div>
+      <div class="reply-toolbar">
+        <div class="reply-tool" onclick="insertTemplate('encourage')">💪 鼓励</div>
+        <div class="reply-tool" onclick="insertTemplate('future')">🔮 未来</div>
+        <div class="reply-tool" onclick="insertTemplate('wisdom')">💡 智慧</div>
+        <div class="reply-tool" onclick="showSuggestModal()">🤖 AI 建议</div>
+      </div>
+      <div class="reply-actions">
+        <button class="btn-primary" onclick="submitReply()">📤 生成对话海报</button>
+      </div>
+    </div>
+    <div style="height:80px"></div>
+  `;
+}
+
+function selectChoice(i){
+  sfxClick();selectedChoice=i;
+  document.querySelectorAll('.choice-item').forEach((el,idx)=>{
+    el.classList.toggle('selected',idx===i);
+  });
+}
+function updateCharCount(){
+  const v=$('replyInput')?.value||'';
+  const el=$('charCount');if(el)el.textContent=v.length+' 字';
+}
+function insertTemplate(type){
+  const ta=$('replyInput');if(!ta)return;
+  const templates={
+    encourage:'你的勇气让我敬佩。一百年后的我们，依然在为同样的理想奋斗。',
+    future:'告诉你一个好消息：一百年后的中国，已经不再是那个积贫积弱的国家了。',
+    wisdom:'历史的河流奔涌向前，每一个在时代中做出选择的人，都是这条河流中不可或缺的水滴。'
+  };
+  ta.value+=(ta.value?'\n':'')+templates[type];
+  updateCharCount();
+}
+function showHints(){
+  const hints=currentDilemma?.hints||[];
+  if(!hints.length){toast('这个困境没有额外提示');return}
+  showModal('💡 写信提示',hints.map(h=>`<div class="suggest-card"><div class="suggest-text">${h}</div></div>`).join(''));
+}
+async function showSuggestModal(){
+  const id=currentIdentity;const d=currentDilemma;
+  showModal('🤖 AI 回信建议','<div style="text-align:center;padding:20px;color:var(--wx-sub)"><div style="font-size:24px;margin-bottom:8px">⏳</div>AI 正在思考中...</div>');
+
+  // 尝试调用 AI API
+  const result = await apiGetAISuggestion({
+    identityName: id.name,
+    identityRole: id.role,
+    identityBio: id.bio,
+    dilemmaTitle: d.title,
+    dilemmaLetter: d.letter,
+    choiceText: selectedChoice !== null ? d.choices[selectedChoice].text : '',
+    style: 'empathize',
+  });
+
+  let suggestions;
+  if (result?.success) {
+    // AI 返回 + 本地模板补充
+    suggestions = [
+      { label: '🤖 AI 建议' + (result.data.source === 'ai' ? '' : '（模板）'), text: result.data.text },
+      { label: '💪 鼓励式', text: `${id.name}，你的勇气让我敬佩。一百年后，无数人因为像你这样勇敢的选择，才有了今天的美好生活。` },
+      { label: '🔮 未来式', text: `告诉你一个好消息：一百年后的中国，已经不再是那个积贫积弱的国家了。你的选择，会改变很多事情。` },
+      { label: '💡 智慧式', text: `历史的河流奔涌向前，每一个在时代中做出选择的人，都是这条河流中不可或缺的水滴。` },
+    ];
+  } else {
+    // 本地 fallback
+    suggestions = [
+      { label: '💪 鼓励式', text: `${id.name}，你的勇气让我敬佩。一百年后，无数人因为像你这样勇敢的选择，才有了今天的美好生活。请相信，你的每一个决定都有意义。` },
+      { label: '🔮 理性式', text: `从2026年的视角看，当时的每一个选择都在推动历史前进。无论你选择哪条路，重要的是保持初心——为这个国家寻找出路。` },
+      { label: '💡 共情式', text: `我能理解你的挣扎和矛盾。即使在一百年后，我们这一代人也面临着自己的困境。但请记住，每一代人的奋斗都不是徒劳的。` },
+    ];
+  }
+
+  const content = suggestions.map(s=>`
+    <div class="suggest-card" onclick="useSuggestion(\`${s.text.replace(/`/g,'\\`')}\`)">
+      <div class="suggest-label">${s.label}</div>
+      <div class="suggest-text">${s.text}</div>
+    </div>
+  `).join('') + '<p style="font-size:12px;color:var(--wx-sub);text-align:center;margin-top:12px">点击即可填入编辑框</p>';
+
+  showModal('🤖 AI 回信建议', content);
+}
+function useSuggestion(text){
+  const ta=$('replyInput');if(ta){ta.value=text;updateCharCount()}
+  closeModal();toast('已填入编辑框！');
+}
+
+function showModal(title,content){
+  const overlay=document.createElement('div');overlay.className='modal-overlay';overlay.id='modalOverlay';
+  overlay.onclick=e=>{if(e.target===overlay)closeModal()};
+  overlay.innerHTML=`<div class="modal-sheet"><div class="modal-handle"></div><div class="modal-title">${title}</div>${content}</div>`;
+  document.body.appendChild(overlay);
+}
+function closeModal(){const m=$('modalOverlay');if(m)m.remove()}
+
+function submitReply(){
+  const text=$('replyInput')?.value?.trim()||'';
+  if(selectedChoice===null){toast('请先选择一个历史选项');return}
+  if(text.length<10){toast('回信不少于10个字哦');return}
+  userReply=text;
+  const d={
+    id:'d_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),
+    identityId:currentIdentity.id,
+    identityName:currentIdentity.name,
+    identityRole:currentIdentity.role,
+    identityAvatar:currentIdentity.avatar,
+    identityEra:currentIdentity.era,
+    dilemmaTag:currentDilemma.tag,
+    dilemmaTitle:currentDilemma.title,
+    dilemmaLetter:currentDilemma.letter,
+    choiceIndex:selectedChoice,
+    choiceLabel:currentDilemma.choices[selectedChoice].label,
+    choiceText:currentDilemma.choices[selectedChoice].text,
+    choiceResult:currentDilemma.choices[selectedChoice].result,
+    replyText:userReply,
+    timestamp:new Date().toLocaleString('zh-CN'),
+  };
+  dialogues.unshift(d);saveDialogues();
+  if(!likes[d.id])likes[d.id]=0;saveLikes();
+  // API 同步
+  apiSaveDialogue(d);
+  apiFetchStats();
+  checkAchievements();
+  renderResult(d);
+}
+
+// ===== RESULT / POSTER =====
+function renderResult(d){
+  navigateTo('result');
+  const isLiked=likes[d.id]>0;
+  $('pageResult').innerHTML=`
+    <div class="poster-style-row">
+      <div class="poster-style-btn ${posterStyle===0?'active':''}" onclick="switchPosterStyle(0)">🎨 经典</div>
+      <div class="poster-style-btn ${posterStyle===1?'active':''}" onclick="switchPosterStyle(1)">📰 报纸</div>
+      <div class="poster-style-btn ${posterStyle===2?'active':''}" onclick="switchPosterStyle(2)">🌙 信笺</div>
+    </div>
+    <div class="poster-wrap"><canvas id="posterCanvas" width="750" height="1200"></canvas>
+      <div class="poster-actions">
+        <button class="save-btn" onclick="savePoster()">💾 保存海报</button>
+        <button class="share-btn" onclick="sharePoster()">📤 分享</button>
+      </div>
+    </div>
+    <div class="like-section">
+      <button class="like-btn ${isLiked?'liked':''}" onclick="toggleLike('${d.id}',this)">❤️</button>
+      <div class="like-count" id="likeCount_${d.id}">${likes[d.id]||0} 人点赞</div>
+    </div>
+    <div class="qr-section">
+      <div class="section-title" style="justify-content:center">📲 扫码开启你的盲盒</div>
+      <canvas id="qrCanvas" width="200" height="200"></canvas>
+      <p>微信扫码 · 与百年前的灵魂对话</p>
+    </div>
+    <button class="btn-primary" onclick="openBlindBox()" style="margin-bottom:80px">🎲 再开一个盲盒</button>
+  `;
+  setTimeout(()=>{drawPoster(d);drawQR()},100);
+}
+function switchPosterStyle(s){
+  posterStyle=s;sfxClick();
+  document.querySelectorAll('.poster-style-btn').forEach((b,i)=>b.classList.toggle('active',i===s));
+  const d=dialogues[0];if(d)drawPoster(d);
+}
+
+// ===== POSTER DRAWING =====
+function drawPoster(d){
+  const canvas=$('posterCanvas');if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const W=750,H=1200;
+
+  if(posterStyle===0) drawClassicPoster(ctx,W,H,d);
+  else if(posterStyle===1) drawNewspaperPoster(ctx,W,H,d);
+  else drawLetterPoster(ctx,W,H,d);
+}
+
+function drawClassicPoster(ctx,W,H,d){
+  // Background
+  const grad=ctx.createLinearGradient(0,0,0,H);
+  grad.addColorStop(0,'#1a0a00');grad.addColorStop(.3,'#2C1810');
+  grad.addColorStop(.7,'#3a2015');grad.addColorStop(1,'#1a0a00');
+  ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
+  // Grid
+  ctx.strokeStyle='rgba(201,169,110,0.05)';ctx.lineWidth=1;
+  for(let x=0;x<W;x+=30){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+  for(let y=0;y<H;y+=30){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+
+  // Title
+  ctx.textAlign='center';ctx.fillStyle='#C9A96E';
+  ctx.font='bold 28px sans-serif';ctx.fillText('百 年 盲 盒 对 话',W/2,56);
+  ctx.font='14px sans-serif';ctx.fillStyle='rgba(201,169,110,.5)';
+  ctx.fillText('1919 ↔ 2026 · 跨时空对话海报',W/2,82);
+
+  // Divider
+  ctx.strokeStyle='rgba(201,169,110,.25)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(50,100);ctx.lineTo(W-50,100);ctx.stroke();
+
+  // 1919 side
+  ctx.font='bold 64px sans-serif';ctx.fillStyle='rgba(201,169,110,.12)';
+  ctx.textAlign='center';ctx.fillText('1919',W/4+10,180);
+
+  ctx.font='44px serif';ctx.fillText(d.identityAvatar,W/4+10,235);
+  ctx.font='bold 22px sans-serif';ctx.fillStyle='#F5F0E8';ctx.fillText(d.identityName,W/4+10,275);
+  ctx.font='13px sans-serif';ctx.fillStyle='#8B7355';ctx.fillText(d.identityRole,W/4+10,300);
+  ctx.font='12px sans-serif';ctx.fillStyle='#C9A96E';ctx.fillText('「'+d.dilemmaTag+'」',W/4+10,330);
+
+  ctx.font='15px sans-serif';ctx.fillStyle='#ccc';ctx.textAlign='center';
+  wrapText(ctx,d.dilemmaTitle,W/4+10,365,290,22);
+
+  // Choice
+  ctx.textAlign='left';ctx.font='bold 13px sans-serif';ctx.fillStyle='#C9A96E';
+  ctx.fillText('他/她的选择：',40,440);
+  ctx.font='15px sans-serif';ctx.fillStyle='#F5F0E8';
+  const lines1=wrapText(ctx,d.choiceText,40,465,290,22);
+
+  // Historical result
+  const ry=465+lines1*22+14;
+  ctx.font='12px sans-serif';ctx.fillStyle='#8B7355';
+  wrapText(ctx,'📜 '+d.choiceResult,40,ry,290,19);
+
+  // Dashed divider
+  ctx.strokeStyle='rgba(201,169,110,.25)';ctx.lineWidth=2;ctx.setLineDash([6,4]);
+  ctx.beginPath();ctx.moveTo(W/2,120);ctx.lineTo(W/2,600);ctx.stroke();ctx.setLineDash([]);
+
+  // Arrow
+  ctx.font='24px serif';ctx.textAlign='center';ctx.fillStyle='#C9A96E';
+  ctx.fillText('⟷',W/2,540);
+
+  // 2026 side
+  ctx.font='bold 64px sans-serif';ctx.fillStyle='rgba(7,193,96,.12)';
+  ctx.fillText('2026',W*3/4+10,180);
+  ctx.font='bold 22px sans-serif';ctx.fillStyle='#07C160';ctx.fillText('你的回信',W*3/4+10,225);
+  ctx.font='13px sans-serif';ctx.fillStyle='rgba(7,193,96,.5)';ctx.fillText('来自2026年的声音',W*3/4+10,252);
+
+  ctx.textAlign='left';ctx.font='15px sans-serif';ctx.fillStyle='#e0e0e0';
+  wrapText(ctx,'「'+d.replyText+'」',W/2+30,285,300,23);
+
+  // Bottom
+  const by=660;
+  ctx.strokeStyle='rgba(201,169,110,.15)';ctx.lineWidth=1;ctx.setLineDash([]);
+  ctx.beginPath();ctx.moveTo(50,by);ctx.lineTo(W-50,by);ctx.stroke();
+
+  ctx.textAlign='center';ctx.font='bold 18px sans-serif';ctx.fillStyle='#C9A96E';
+  ctx.fillText('⏳ 跨越百年的对话',W/2,by+40);
+
+  // Timeline
+  const tly=by+70;
+  const tg=ctx.createLinearGradient(60,0,W-60,0);
+  tg.addColorStop(0,'#C9A96E');tg.addColorStop(.5,'#8B7355');tg.addColorStop(1,'#07C160');
+  ctx.strokeStyle=tg;ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(60,tly);ctx.lineTo(W-60,tly);ctx.stroke();
+  [60,W/2,W-60].forEach((x,i)=>{ctx.beginPath();ctx.arc(x,tly,6,0,Math.PI*2);ctx.fillStyle=i===0?'#C9A96E':i===1?'#8B7355':'#07C160';ctx.fill()});
+
+  ctx.font='13px sans-serif';
+  ctx.textAlign='left';ctx.fillStyle='#C9A96E';ctx.fillText('1919·五四风云',60,tly+26);
+  ctx.textAlign='center';ctx.fillStyle='#8B7355';ctx.fillText('百年时空',W/2,tly+26);
+  ctx.textAlign='right';ctx.fillStyle='#07C160';ctx.fillText('2026·你的声音',W-60,tly+26);
+
+  // Quote
+  ctx.textAlign='center';ctx.font='italic 15px sans-serif';ctx.fillStyle='rgba(201,169,110,.5)';
+  ctx.fillText('"每一代人都有自己的长征路"',W/2,tly+65);
+  ctx.font='12px sans-serif';ctx.fillStyle='rgba(255,255,255,.2)';
+  ctx.fillText('— 致所有在时代洪流中做出选择的人',W/2,tly+90);
+
+  // Footer
+  ctx.font='11px sans-serif';ctx.fillStyle='rgba(255,255,255,.18)';
+  ctx.fillText('百年盲盒对话 · 与历史同行 · century-dialogue.app',W/2,H-24);
+}
+
+function drawNewspaperPoster(ctx,W,H,d){
+  // Sepia paper
+  ctx.fillStyle='#F5ECD7';ctx.fillRect(0,0,W,H);
+  // Noise texture
+  for(let i=0;i<3000;i++){ctx.fillStyle=`rgba(139,115,85,${Math.random()*.06})`;ctx.fillRect(Math.random()*W,Math.random()*H,1,1)}
+
+  // Header
+  ctx.fillStyle='#2C1810';ctx.fillRect(0,0,W,80);
+  ctx.textAlign='center';ctx.fillStyle='#F5ECD7';
+  ctx.font='bold 14px serif';ctx.fillText('中 华 民 國 · 号 外',W/2,30);
+  ctx.font='bold 28px serif';ctx.fillText('百年盲盒对话',W/2,62);
+
+  // Date line
+  ctx.fillStyle='#2C1810';ctx.font='12px serif';ctx.textAlign='center';
+  ctx.fillText('═'.repeat(40),W/2,95);
+  ctx.fillText(`${d.identityEra} — ${new Date().toLocaleDateString('zh-CN')}`,W/2,112);
+  ctx.fillText('═'.repeat(40),W/2,128);
+
+  // Headline
+  ctx.textAlign='center';ctx.fillStyle='#2C1810';
+  ctx.font='bold 22px serif';
+  const headline=`${d.identityName}的困境：${d.dilemmaTitle}`;
+  wrapText(ctx,headline,W/2,165,W-80,30);
+
+  // 1919 column
+  ctx.textAlign='left';ctx.font='bold 16px serif';ctx.fillStyle='#8B2020';
+  ctx.fillText('【1919年】'+d.identityRole,40,240);
+  ctx.font='13px serif';ctx.fillStyle='#444';
+  const letterShort=d.dilemmaLetter.slice(0,120)+'…';
+  wrapText(ctx,letterShort,40,265,320,20);
+
+  ctx.font='bold 13px serif';ctx.fillStyle='#2C1810';
+  ctx.fillText('其人选择：',40,340);
+  ctx.font='13px serif';ctx.fillStyle='#555';
+  wrapText(ctx,d.choiceLabel+'. '+d.choiceText,40,360,320,20);
+
+  // 2026 column
+  ctx.textAlign='left';ctx.font='bold 16px serif';ctx.fillStyle='#1a5c2a';
+  ctx.fillText('【2026年】回信',W/2+20,240);
+  ctx.font='italic 13px serif';ctx.fillStyle='#444';
+  wrapText(ctx,'「'+d.replyText.slice(0,150)+(d.replyText.length>150?'…':'')+'」',W/2+20,265,310,20);
+
+  // Divider between columns
+  ctx.strokeStyle='#ccc';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(W/2,230);ctx.lineTo(W/2,440);ctx.stroke();
+
+  // Historical note
+  ctx.fillStyle='#2C1810';ctx.fillRect(40,460,W-80,120);
+  ctx.textAlign='center';ctx.fillStyle='#F5ECD7';
+  ctx.font='bold 14px serif';ctx.fillText('📜 历史回响',W/2,490);
+  ctx.font='12px serif';ctx.textAlign='left';
+  wrapText(ctx,d.choiceResult,60,512,W-120,18);
+
+  // Stamp
+  ctx.save();ctx.translate(W-120,380);ctx.rotate(-.15);
+  ctx.strokeStyle='#8B2020';ctx.lineWidth=3;
+  ctx.strokeRect(-40,-30,80,60);
+  ctx.font='bold 12px serif';ctx.fillStyle='#8B2020';ctx.textAlign='center';
+  ctx.fillText('民國八年',0,-10);ctx.fillText('邮政',0,10);ctx.fillText('已检',0,28);
+  ctx.restore();
+
+  // Footer
+  ctx.fillStyle='#2C1810';ctx.fillRect(0,H-50,W,50);
+  ctx.textAlign='center';ctx.fillStyle='#F5ECD7';ctx.font='12px serif';
+  ctx.fillText('百年盲盒对话 · century-dialogue.app · 扫码开启你的盲盒',W/2,H-22);
+}
+
+function drawLetterPoster(ctx,W,H,d){
+  // Warm cream background
+  ctx.fillStyle='#FFF8EE';ctx.fillRect(0,0,W,H);
+  // Subtle lines like ruled paper
+  ctx.strokeStyle='rgba(139,115,85,.08)';ctx.lineWidth=1;
+  for(let y=60;y<H-60;y+=28){ctx.beginPath();ctx.moveTo(40,y);ctx.lineTo(W-40,y);ctx.stroke()}
+
+  // Red margin line
+  ctx.strokeStyle='rgba(178,34,34,.15)';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(80,0);ctx.lineTo(80,H);ctx.stroke();
+
+  // Title
+  ctx.textAlign='center';ctx.fillStyle='#2C1810';
+  ctx.font='bold 24px "KaiTi",serif';ctx.fillText('一封跨越百年的信',W/2,50);
+
+  // From 1919
+  ctx.textAlign='left';ctx.font='14px "KaiTi",serif';ctx.fillStyle='#8B7355';
+  ctx.fillText(`寄信人：${d.identityName}（${d.identityRole}）  ${d.identityEra}`,90,90);
+
+  ctx.font='16px "KaiTi",serif';ctx.fillStyle='#2C1810';
+  const ll=wrapText(ctx,d.dilemmaLetter.slice(0,180)+'…',90,125,W-140,28);
+
+  // Divider with scissors
+  const dy=125+ll*28+20;
+  ctx.strokeStyle='#ccc';ctx.setLineDash([8,4]);
+  ctx.beginPath();ctx.moveTo(40,dy);ctx.lineTo(W-40,dy);ctx.stroke();ctx.setLineDash([]);
+  ctx.font='16px serif';ctx.fillStyle='#999';ctx.textAlign='left';
+  ctx.fillText('✂',30,dy+5);
+
+  // Choice
+  ctx.font='bold 14px "KaiTi",serif';ctx.fillStyle='#B22222';
+  ctx.fillText('他/她的选择：',90,dy+35);
+  ctx.font='15px "KaiTi",serif';ctx.fillStyle='#333';
+  const cl=wrapText(ctx,d.choiceLabel+'. '+d.choiceText,90,dy+62,W-140,24);
+
+  // Reply
+  const ry=dy+62+cl*24+30;
+  ctx.strokeStyle='#07C160';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(90,ry-10);ctx.lineTo(200,ry-10);ctx.stroke();
+
+  ctx.font='bold 14px "KaiTi",serif';ctx.fillStyle='#07C160';
+  ctx.fillText('你的回信（2026）：',90,ry+15);
+  ctx.font='16px "KaiTi",serif';ctx.fillStyle='#111';
+  wrapText(ctx,'「'+d.replyText+'」',90,ry+45,W-140,28);
+
+  // Historical note
+  const ny=H-280;
+  ctx.fillStyle='rgba(139,115,85,.06)';ctx.fillRect(40,ny,W-80,100);
+  ctx.font='13px "KaiTi",serif';ctx.fillStyle='#8B7355';ctx.textAlign='left';
+  ctx.fillText('📜 历史回响：',60,ny+28);
+  ctx.font='12px sans-serif';
+  wrapText(ctx,d.choiceResult,60,ny+52,W-120,19);
+
+  // Footer quote
+  ctx.textAlign='center';ctx.font='italic 14px "KaiTi",serif';ctx.fillStyle='rgba(44,24,16,.3)';
+  ctx.fillText('"愿中国青年都摆脱冷气，只是向上走"',W/2,H-120);
+  ctx.font='12px sans-serif';ctx.fillStyle='rgba(44,24,16,.2)';
+  ctx.fillText('—— 鲁迅',W/2,H-95);
+
+  ctx.font='11px sans-serif';ctx.fillStyle='rgba(44,24,16,.15)';
+  ctx.fillText('百年盲盒对话 · century-dialogue.app',W/2,H-30);
+}
+
+function wrapText(ctx,text,x,y,maxW,lineH){
+  const chars=text.split('');let line='',lines=0;
+  for(const ch of chars){
+    const test=line+ch;
+    if(ctx.measureText(test).width>maxW){ctx.fillText(line,x,y+lines*lineH);line=ch;lines++}
+    else line=test;
+  }
+  if(line){ctx.fillText(line,x,y+lines*lineH);lines++}
+  return lines;
+}
+
+function savePoster(){
+  const c=$('posterCanvas');if(!c)return;
+  const a=document.createElement('a');a.download='百年盲盒对话海报.png';a.href=c.toDataURL('image/png');a.click();
+  toast('海报已保存！');
+}
+function sharePoster(){
+  const c=$('posterCanvas');if(!c)return;
+  c.toBlob(blob=>{
+    if(navigator.share){
+      const f=new File([blob],'百年盲盒对话.png',{type:'image/png'});
+      navigator.share({title:'百年盲盒对话',text:'我收到了一封来自1919年的信，这是我的回信。',files:[f]}).catch(()=>{});
+    } else {
+      try{
+        const item=new ClipboardItem({'image/png':blob});
+        navigator.clipboard.write([item]).then(()=>toast('海报已复制到剪贴板！')).catch(()=>savePoster());
+      }catch(e){savePoster()}
+    }
+  });
+}
+
+// ===== QR CODE =====
+function drawQR(){
+  const canvas=$('qrCanvas');if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const S=200;
+
+  // 尝试使用服务端 QR（真实二维码）
+  const d=dialogues[0];
+  const qrUrl = d?.serverId
+    ? `${API_BASE}/api/qr/${d.serverId}?size=${S*2}`
+    : `${API_BASE}/api/qr?text=${encodeURIComponent(location.origin)}&size=${S*2}`;
+
+  const img=new Image();
+  img.crossOrigin='anonymous';
+  img.onload=()=>{ctx.drawImage(img,0,0,S,S)};
+  img.onerror=()=>{
+    // Fallback: 本地装饰性图案
+    drawQR_fallback(ctx,S);
+  };
+  img.src=qrUrl;
+}
+function drawQR_fallback(ctx,S){
+  const N=25,cell=(S-40)/N,off=20;
+  ctx.fillStyle='#fff';ctx.fillRect(0,0,S,S);
+  let seed=0;const url=location.origin;
+  for(let i=0;i<url.length;i++)seed=((seed<<5)-seed)+url.charCodeAt(i);
+  ctx.fillStyle='#1a0a00';
+  for(let r=0;r<N;r++)for(let c=0;c<N;c++){
+    const inCorner=(r<7&&c<7)||(r<7&&c>=N-7)||(r>=N-7&&c<7);
+    let fill=false;
+    if(inCorner){
+      const dr=r<7?r:r-(N-7),dc=c<7?c:c-(N-7);
+      fill=dr===0||dr===6||dc===0||dc===6||(dr>=2&&dr<=4&&dc>=2&&dc<=4);
+    }else{
+      const h=Math.abs((r*N+c+seed)*2654435761);fill=(h%3)!==0;
+    }
+    if(fill)ctx.fillRect(off+c*cell,off+r*cell,cell-.5,cell-.5);
+  }
+  ctx.fillStyle='#fff';ctx.fillRect(S/2-22,S/2-22,44,44);
+  ctx.font='bold 14px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillStyle='#1a0a00';ctx.fillText('1919',S/2,S/2);
+  ctx.strokeStyle='#1a0a00';ctx.lineWidth=2;ctx.strokeRect(S/2-24,S/2-24,48,48);
+}
+
+// ===== LIKES =====
+function toggleLike(id,btn){
+  sfxLike();
+  if(!likes[id])likes[id]=0;
+  likes[id]++;saveLikes();
+  btn.classList.remove('liked');
+  void btn.offsetWidth;
+  btn.classList.add('liked');
+  const el=$('likeCount_'+id);if(el)el.textContent=likes[id]+' 人点赞';
+  // API 同步
+  apiLike(id);
+  checkAchievements();
+}
+
+// ===== RANKING =====
+function renderRanking(){
+  navigateTo('ranking');
+  $('pageRanking').innerHTML=`
+    <div class="section-title">🏆 回信排行榜</div>
+    <p style="font-size:12px;color:var(--wx-sub);margin-bottom:14px">按点赞数排名</p>
+    <div id="rankingList">
+      <div style="text-align:center;padding:20px;color:var(--wx-sub)">加载中...</div>
+    </div>
+    <div style="height:80px"></div>
+  `;
+  // 从 API 加载
+  loadRankingList();
+}
+
+async function loadRankingList(){
+  const remote=await apiFetchLeaderboard();
+  const list=$('rankingList');
+  if(!list) return;
+  if(remote&&remote.length){
+    list.innerHTML=remote.map((d,i)=>{
+      const lk=d.likeCount||0;
+      const rc=i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank-other';
+      const badge=i===0?'<span class="badge badge-hot">🔥最热</span>':i<3?'<span class="badge badge-new">⭐优秀</span>':'';
+      const ts=d.createdAt?new Date(d.createdAt).toLocaleDateString('zh-CN'):'';
+      return `<div class="leader-card" onclick="viewRemoteDialogue('${d.id}')">
+        <div class="leader-rank ${rc}">${i+1}</div>
+        <div class="leader-avatar">${d.identityAvatar||'📖'}</div>
+        <div class="leader-info">
+          <div class="leader-name">${d.identityName||'匿名'}·${d.identityRole||''}${badge}</div>
+          <div class="leader-meta">${ts}</div>
+          <div class="leader-meta" style="color:#333;margin-top:2px">${(d.replyText||'').slice(0,40)}…</div>
+        </div>
+        <div class="leader-likes">❤️ ${lk}</div>
+      </div>`;
+    }).join('');
+  } else {
+    // fallback 本地数据
+    const sorted=[...dialogues].sort((a,b)=>(likes[b.id]||0)-(likes[a.id]||0));
+    if(sorted.length){
+      list.innerHTML=sorted.map((d,i)=>{
+        const lk=likes[d.id]||0;
+        const rc=i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank-other';
+        return `<div class="leader-card" onclick="viewDialogue('${d.id}')">
+          <div class="leader-rank ${rc}">${i+1}</div>
+          <div class="leader-avatar">${d.identityAvatar}</div>
+          <div class="leader-info">
+            <div class="leader-name">${d.identityName}·${d.identityRole}</div>
+            <div class="leader-meta">${d.timestamp}</div>
+            <div class="leader-meta" style="color:#333;margin-top:2px">${d.replyText.slice(0,40)}…</div>
+          </div>
+          <div class="leader-likes">❤️ ${lk}</div>
+        </div>`;
+      }).join('');
+    } else {
+      list.innerHTML='<div class="empty"><div class="empty-icon">🏆</div><div class="empty-text">还没有排行榜数据</div></div>';
+    }
+  }
+}
+
+function viewDialogue(id){
+  const d=dialogues.find(x=>x.id===id);if(!d)return;
+  currentIdentity=IDENTITIES.find(x=>x.id===d.identityId);
+  currentDilemma=currentIdentity?.dilemma;
+  selectedChoice=d.choiceIndex;userReply=d.replyText;
+  renderResult(d);
+}
+
+// ===== TIMELINE =====
+function renderTimeline(){
+  navigateTo('timeline');
+  const events=[
+    {year:'1915',title:'《新青年》创刊',desc:'陈独秀在上海创办《青年杂志》（后改名《新青年》），举起"民主"与"科学"两面大旗。',dot:''},
+    {year:'1917',title:'文学革命兴起',desc:'胡适发表《文学改良刍议》，陈独秀发表《文学革命论》，白话文运动席卷全国。',dot:''},
+    {year:'1919.1',title:'巴黎和会召开',desc:'中国作为战胜国参加巴黎和会，却遭遇外交失败，山东权益将被转让给日本。',dot:''},
+    {year:'1919.5.4',title:'五四运动爆发',desc:'北京3000余名学生走上街头，高呼"外争主权，内除国贼"，五四运动爆发。',dot:'',highlight:true},
+    {year:'1919.6',title:'六三运动',desc:'上海工人开始大规模罢工，工人阶级首次以独立姿态登上政治舞台。',dot:''},
+    {year:'1919.7',title:'《湘江评论》创刊',desc:'毛泽东在长沙创办《湘江评论》，以白话文宣传新思想。',dot:''},
+    {year:'1921',title:'中国共产党成立',desc:'五四运动中成长起来的先进分子，在上海成立了中国共产党。',dot:''},
+    {year:'2026',title:'你的回信',desc:'百年之后，你以2026年的视角，给那个时代的人写了一封信。',dot:'',now:true},
+  ];
+  // Insert user dialogues into timeline
+  dialogues.slice(0,3).forEach(d=>{
+    events.splice(events.length-1,0,{
+      year:d.timestamp.split(' ')[0]||'2026',
+      title:`给${d.identityName}的回信`,
+      desc:d.replyText.slice(0,60)+'…',
+      now:true
+    });
+  });
+
+  $('pageTimeline').innerHTML=`
+    <div class="section-title">📜 历史时间线</div>
+    <p style="font-size:12px;color:var(--wx-sub);margin-bottom:16px">从新文化运动到百年后的对话</p>
+    <div class="timeline-line">
+      ${events.map((e,i)=>`
+        <div class="tl-item" style="animation-delay:${i*.1}s">
+          <div class="tl-dot ${e.now?'now':''}"></div>
+          <div class="tl-year">${e.year}</div>
+          <div class="tl-title">${e.title}</div>
+          <div class="tl-desc">${e.desc}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div style="height:80px"></div>
+  `;
+}
+
+// ===== ACHIEVEMENTS =====
+function renderAchievements(){
+  navigateTo('achievements');
+  const unlocked=unlockedAch.length;
+  $('pageAchievements').innerHTML=`
+    <div class="section-title">🎖️ 成就徽章</div>
+    <p style="font-size:12px;color:var(--wx-sub);margin-bottom:16px">已解锁 ${unlocked}/${ACHIEVEMENTS.length} 个成就</p>
+    <div class="ach-grid">
+      ${ACHIEVEMENTS.map(a=>{
+        const on=unlockedAch.includes(a.id);
+        return `<div class="ach-card ${on?'unlocked':''}">
+          <div class="ach-icon">${on?a.icon:'🔒'}</div>
+          <div class="ach-name">${a.name}</div>
+          <div class="ach-desc">${a.desc}</div>
+        </div>`;
+      }).join('')}
+    </div>
+    <div style="height:80px"></div>
+  `;
+}
+
+// ===== 全局错误保护 =====
+window.onerror=function(){return false};
+window.onunhandledrejection=function(){return true};
+
+// ===== INIT =====
+try{initSplash()}catch(e){console.warn('init error:',e)}
+</script>
+</body>
+</html>
